@@ -1,56 +1,105 @@
-* {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
+/* Background and layout */
 body {
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #2e026d, #8b5cf6, #ec4899);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.calculator {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+/* Animated gradient */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating shapes */
+.background-shapes::before,
+.background-shapes::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  filter: blur(80px);
+}
+.background-shapes::before {
+  width: 400px;
+  height: 400px;
+  background: #f472b6;
+  top: -100px;
+  left: -100px;
+}
+.background-shapes::after {
   width: 300px;
+  height: 300px;
+  background: #6366f1;
+  bottom: -80px;
+  right: -80px;
 }
 
+/* Calculator container */
+.calculator {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 20px;
+  width: 320px;
+  z-index: 2;
+}
+
+/* Display screen */
 .display {
   width: 100%;
-  height: 50px;
-  margin-bottom: 10px;
-  font-size: 24px;
-  padding: 10px;
+  height: 60px;
+  margin-bottom: 20px;
+  font-size: 28px;
   text-align: right;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  pointer-events: none;
 }
 
+/* Buttons grid */
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 
+/* Buttons */
 button {
   padding: 20px;
-  font-size: 18px;
+  font-size: 20px;
   border: none;
-  border-radius: 8px;
-  background-color: #e0e0e0;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 
 button:hover {
-  background-color: #d5d5d5;
+  background-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 button.zero {
   grid-column: span 2;
-}
+  }
