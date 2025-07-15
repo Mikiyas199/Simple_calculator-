@@ -1,22 +1,75 @@
-function appendValue(value) {
-  const display = document.getElementById('display');
-  display.value += value;
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
 }
 
-function clearDisplay() {
-  document.getElementById('display').value = '';
+.calculator {
+    width: 300px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-function deleteLast() {
-  const display = document.getElementById('display');
-  display.value = display.value.slice(0, -1);
+.display {
+    margin-bottom: 20px;
 }
 
-function calculate() {
-  const display = document.getElementById('display');
-  try {
-    display.value = eval(display.value);
-  } catch {
-    display.value = 'Error';
-  }
+.display input {
+    width: 100%;
+    height: 60px;
+    font-size: 24px;
+    text-align: right;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
 }
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+button {
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #666;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #888;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.equals {
+    grid-row: span 2;
+    height: auto;
+    background-color: #f90;
+}
+
+.equals:hover {
+    background-color: #fa0;
+}
+
+button:nth-child(4n+1) {
+    background-color: #555;
+}
+
+button:last-child {
+    background-color: #555;
+      }
