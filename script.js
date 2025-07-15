@@ -20,3 +20,16 @@ function calculate() {
     display.value = "Error";
   }
 }
+
+// Allow keyboard typing
+document.addEventListener("keydown", (e) => {
+  if (e.key.match(/[0-9+\-*/.]/)) {
+    append(e.key);
+  } else if (e.key === "Backspace") {
+    deleteLast();
+  } else if (e.key === "Enter" || e.key === "=") {
+    calculate();
+  } else if (e.key === "Escape") {
+    clearDisplay();
+  }
+});
